@@ -1,0 +1,15 @@
+#METADATA
+id	789285146331639808
+date	2016-10-21 00:00:17
+retweets	0
+favorites	2
+mentions	
+username	OperacoesRio
+permalink	https://twitter.com/OperacoesRio/status/789285146331639808
+hashtags	
+geo	
+type	RW
+
+#TEXT
+COPACABANA | Túnel Prefeito Sá Freire Alvim está fechado para manuteção. CET-Rio no local.
+

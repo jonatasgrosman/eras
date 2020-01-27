@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://inf.puc-rio.br/ontologies/TEDO/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://inf.puc-rio.br/ontologies/TEDO/"
+     versionIRI="http://inf.puc-rio.br/ontologies/TEDO/2.0.0/">
+    <Prefix name="" IRI="http://inf.puc-rio.br/ontologies/TEDO/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <DataProperty IRI="hasURL"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasDateTimeStamp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="WeatherEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TrafficCondition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasTime"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="RoadWork"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Bus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowsTo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="GoodTrafficCondition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasActor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TwoWayEffect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Actor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasTrafficEffect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="redirectsTrafficTo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PartialEffect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="BadTrafficCondition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasName"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SlowTraffic"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasReference"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="nearTo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="OtherActor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="TrafficEffect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Event"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasAuthor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Motorcycle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Breakdown"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Solution"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Accident"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="BlockedTraffic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Time"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasCoordinates"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="PublicAuthority"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasBorder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Coordinates"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasLongitude"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Protest"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="causes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasLatitude"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Truck"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hasTimeStamp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="OtherEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Car"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Publication"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="HeavyTraffic"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="Accident"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="BadTrafficCondition"/>
+        <Class IRI="TrafficCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="BlockedTraffic"/>
+        <Class IRI="BadTrafficCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Breakdown"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Bus"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Car"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Coordinates"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="hasLatitude"/>
+            <Datatype abbreviatedIRI="xsd:decimal"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Coordinates"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="hasLongitude"/>
+            <Datatype abbreviatedIRI="xsd:decimal"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Event"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="hasLocation"/>
+            <Class IRI="Location"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Event"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="hasTime"/>
+            <Class IRI="Time"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="GoodTrafficCondition"/>
+        <Class IRI="TrafficCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="HeavyTraffic"/>
+        <Class IRI="BadTrafficCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Motorcycle"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="OtherActor"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="OtherEvent"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PartialEffect"/>
+        <Class IRI="TrafficEffect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Protest"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="PublicAuthority"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Publication"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="RoadWork"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SlowTraffic"/>
+        <Class IRI="BadTrafficCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Solution"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TrafficCondition"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Truck"/>
+        <Class IRI="Actor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="TwoWayEffect"/>
+        <Class IRI="TrafficEffect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="WeatherEvent"/>
+        <Class IRI="Event"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="BadTrafficCondition"/>
+        <Class IRI="GoodTrafficCondition"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="Bus"/>
+        <Class IRI="Car"/>
+        <Class IRI="Motorcycle"/>
+        <Class IRI="OtherActor"/>
+        <Class IRI="PublicAuthority"/>
+        <Class IRI="Truck"/>
+    </DisjointClasses>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hasCoordinates"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hasLocation"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hasTime"/>
+    </FunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="nearTo"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="causes"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="causes"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowsTo"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasActor"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasBorder"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasCoordinates"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasReference"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasTime"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasTrafficEffect"/>
+        <Class IRI="TrafficCondition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="nearTo"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="redirectsTrafficTo"/>
+        <Class IRI="BadTrafficCondition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="causes"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowsTo"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasActor"/>
+        <Class IRI="Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasBorder"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasCoordinates"/>
+        <Class IRI="Coordinates"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasLocation"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasReference"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasTime"/>
+        <Class IRI="Time"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasTrafficEffect"/>
+        <Class IRI="TrafficEffect"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="nearTo"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="redirectsTrafficTo"/>
+        <Class IRI="Location"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasAuthor"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasLatitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasLongitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasTimeStamp"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hasURL"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasAuthor"/>
+        <Class IRI="Publication"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasDateTimeStamp"/>
+        <Class IRI="Time"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasLatitude"/>
+        <Class IRI="Coordinates"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasLongitude"/>
+        <Class IRI="Coordinates"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasName"/>
+        <Class IRI="Location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasName"/>
+        <Class IRI="PublicAuthority"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasTimeStamp"/>
+        <Class IRI="Time"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hasURL"/>
+        <Class IRI="Publication"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="hasAuthor"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasDateTimeStamp"/>
+        <Datatype abbreviatedIRI="xsd:dateTimeStamp"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasLatitude"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasLongitude"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasTimeStamp"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hasURL"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

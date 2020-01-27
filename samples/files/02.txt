@@ -1,0 +1,15 @@
+#METADATA
+id	664182653789339648
+mentions	
+retweets	0
+favorites	1
+date	2015-11-10 18:47:39
+username	odia24horas
+permalink	https://twitter.com/odia24horas/status/664182653789339648
+hashtags	
+geo	
+type	A
+
+#TEXT
+Caminhão e carro colidiram na Est do Tindiba, altura da R. Lopo Saraiva, sentido Freguesia. Retenções desde a Rua André Rocha.
+

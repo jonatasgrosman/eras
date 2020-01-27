@@ -1,0 +1,126 @@
+<!doctype html>
+<html ng-app="ERAS">
+
+<head>
+  <meta charset="utf-8">
+  <!--base href="/"-->
+
+  <title ng-bind="$state.data.title">Entities and Relations Annotation System</title>
+  <meta name="description" content="Entities and Relations Annotation System">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"/>
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/pnotify/dist/pnotify.css"/>
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/pnotify/dist/pnotify.buttons.css"/>
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/pnotify/dist/pnotify.nonblock.css"/>
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/custom-ls.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-block-ui/angular-block-ui.min.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-ui-switch/angular-ui-switch.min.css"/>
+<link rel="stylesheet" type="text/css" href="lib/gentelella-theme/vendor/morrisJS/morris.css">
+<link rel="styleSheet" type="text/css" href="lib/angular-ui-grid/ui-grid.css"/>
+
+<link rel="stylesheet" type="text/css" href="lib/angular.treeview/css/angular.treeview.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-tree-control/css/tree-control.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-tree-control/css/tree-control-attribute.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-ivh-treeview/dist/ivh-treeview.min.css">
+<link rel="stylesheet" type="text/css" href="lib/angular-ivh-treeview/dist/ivh-treeview-theme-basic.css">
+
+<link rel="stylesheet" type="text/css" href="css/app.css?v=0.19">
+
+</head>
+
+<body class="nav-md">
+
+<script src="lib/gentelella-theme/vendor/jquery/dist/jquery.min.js"></script>
+<script src="lib/gentelella-theme/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="lib/gentelella-theme/vendor/fastclick/lib/fastclick.js"></script>
+<script src="lib/gentelella-theme/vendor/raphael/raphael.min.js"></script>
+<script src="lib/gentelella-theme/vendor/morrisJS/morris.min.js"></script>
+<script src="lib/gentelella-theme/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="lib/gentelella-theme/vendor/pnotify/dist/pnotify.js"></script>
+<script src="lib/gentelella-theme/vendor/pnotify/dist/pnotify.buttons.js"></script>
+<script src="lib/gentelella-theme/vendor/pnotify/dist/pnotify.nonblock.js"></script>
+
+<script src="lib/fileSaver-js/FileSaver.min.js"></script>
+<script src="lib/x2js/xml2json.min.js"></script>
+<script src="lib/annotatorjs/annotator-min.js?v=0.19"></script>
+<script src="lib/plotly/plotly-latest.min.js"></script>
+
+<script src="lib/d3-wordcloud/lib/d3/d3.js"></script>
+<script src="lib/d3-wordcloud/lib/d3/d3.layout.cloud.js"></script>
+<script src="lib/d3-wordcloud/d3.wordcloud.js"></script>
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-animate.min.js"></script>
+<script src="lib/angular/i18n/angular-locale_pt-br.js"></script>
+<script src="lib/angular/angular-messages.min.js"></script>
+<script src="lib/angular-ui/angular-ui-router.min.js"></script>
+<script src="lib/angular-ui/ui-bootstrap-tpls-1.2.4.min.js"></script>
+<script src="lib/angular-block-ui/angular-block-ui.min.js"></script>
+<script src="lib/ng-file-model/ng-file-model.js"></script>
+<script src="lib/PDFObject/pdfobject.min.js"></script>
+<script src="lib/angular-ui-switch/angular-ui-switch.min.js"></script>
+<script src="lib/angular-scroll/angular-scroll.min.js"></script>
+<script src="lib/angular-ui-grid/ui-grid.js"></script>
+
+<script src="lib/angular.treeview/angular.treeview.min.js"></script>
+<script src="lib/angular-tree-control/angular-tree-control.js"></script>
+<script src="lib/angular-ivh-treeview/dist/ivh-treeview.min.js"></script>
+
+<script src="js/app.js?v=0.19"></script>
+
+<script src="js/config/constants.js?v=0.19"></script>
+<script src="js/config/config.js?v=0.19"></script>
+<script src="js/config/run.js?v=0.19"></script>
+
+<script src="js/interceptor/tokenInterceptor.js?v=0.19"></script>
+<script src="js/interceptor/cacheInterceptor.js?v=0.19"></script>
+
+<script src="js/service/localStorageService.js?v=0.19"></script>
+<script src="js/service/authService.js?v=0.19"></script>
+<script src="js/service/userService.js?v=0.19"></script>
+<script src="js/service/projectService.js?v=0.19"></script>
+<script src="js/service/documentPackageService.js?v=0.19"></script>
+<script src="js/service/documentService.js?v=0.19"></script>
+
+<script src="js/util/arrayUtil.js?v=0.19"></script>
+<script src="js/util/ontologyUtil.js?v=0.19"></script>
+<script src="js/util/statisticsUtil.js?v=0.19"></script>
+<script src="js/util/dateUtil.js?v=0.19"></script>
+<script src="js/util/base64Util.js?v=0.19"></script>
+<script src="js/util/pnotifyUtil.js?v=0.19"></script>
+<script src="js/util/plotlyUtil.js?v=0.19"></script>
+<script src="js/util/gentelellaThemeUtil.js?v=0.19"></script>
+<script src="js/util/httpUtil.js?v=0.19"></script>
+<script src="js/util/latexUtil.js?v=0.19"></script>
+
+<script src="js/directive/passwordCheck.js?v=0.19"></script>
+<script src="js/directive/limitTo.js?v=0.19"></script>
+<script src="js/directive/ngReallyClick.js?v=0.19"></script>
+<script src="js/directive/ngRightClick.js?v=0.19"></script>
+<script src="js/directive/dlKeyCode.js?v=0.19"></script>
+<script src="js/directive/checklistModel.js?v=0.19"></script>
+
+<script src="js/filter/objectIdToDate.js?v=0.19"></script>
+<script src="js/filter/ellipsis.js?v=0.19"></script>
+<script src="js/filter/elapsed.js?v=0.19"></script>
+<script src="js/filter/dropDigits.js?v=0.19"></script>
+
+<script src="js/controller/appController.js?v=0.19"></script>
+<script src="js/controller/homeController.js?v=0.19"></script>
+<script src="js/controller/headerController.js?v=0.19"></script>
+<script src="js/controller/loginController.js?v=0.19"></script>
+<script src="js/controller/recoveryPasswordController.js?v=0.19"></script>
+<script src="js/controller/profileController.js?v=0.19"></script>
+<script src="js/controller/usersManagementController.js?v=0.19"></script>
+<script src="js/controller/projectsManagementController.js?v=0.19"></script>
+<script src="js/controller/dataManagementController.js?v=0.19"></script>
+<script src="js/controller/dataAnnotationController.js?v=0.19"></script>
+
+<div ui-view="content"></div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+#METADATA
+id	791024809853456384
+date	2016-10-25 19:13:05
+retweets	5
+favorites	9
+mentions	
+username	OperacoesRio
+permalink	https://twitter.com/OperacoesRio/status/791024809853456384
+hashtags	#CENTRO
+geo	
+type	P
+
+#TEXT
+#CENTRO Manifestação segue pela Rua da Assembleia. via interditada.
+

@@ -1,0 +1,15 @@
+#METADATA
+id	664170465473245184
+mentions	
+retweets	0
+favorites	3
+date	2015-11-10 17:59:13
+username	odia24horas
+permalink	https://twitter.com/odia24horas/status/664170465473245184
+hashtags	
+geo	
+type	B
+
+#TEXT
+Retirado caminhão que enguiçou na Av. Ayrton Senna, na saída para Gardênia Azul, sentido Jacarepaguá.
+

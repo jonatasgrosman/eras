@@ -1,0 +1,46 @@
+<div class="login_wrapper" style="color:#ffffff">
+  <div class="animate form login_form">
+    <section class="login_content">
+      <form name="loginForm">
+        <h1>ERAS</h1>
+        <div>
+          <input ng-model="user.email" type="email" class="form-control" placeholder="Email" required="" />
+        </div>
+        <div>
+          <input ng-model="user.password" type="password" class="form-control" placeholder="Password"
+                 required="" ng-keyup="$event.keyCode == 13 && login()"/>
+        </div>
+        <div>
+          <button type="button" class="btn btn-default" ng-click="login()" ng-disabled="loginForm.$invalid">Log in</button>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div>
+          <a ui-sref="recovery-password" style="color:#ffffff">Lost your password?</a>
+        </div>
+
+        <div class="separator"></div>
+
+        <div>
+
+          <div class="alert alert-danger" ng-if="loginError">
+            <div ng-if="loginError == 401">
+              Wrong email/password combination
+            </div>
+            <div ng-if="loginError != 401">
+              Oh Gosh!
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+          <br />
+
+          <div>
+            <p>©2016 All Rights Reserved</p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

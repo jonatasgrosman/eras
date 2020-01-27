@@ -1,0 +1,337 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" block-ui="projectsManagementBox">
+
+      <div class="x_title">
+        <h2>Projects</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <button type="button" class="btn btn-success" ng-click="onShowAddProjectModal()"
+                  data-toggle="modal" data-target="#projectModal" title="Add project">
+            <i class="fa fa-plus"></i>
+          </button>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="x_content">
+
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Ontology</th>
+            <th>Annotation Guidelines</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="project in projects">
+            <td ng-bind="project.name"></td>
+            <td ng-bind="project.language"></td>
+            <td>
+              <button type="button" class="btn btn-default font-10" ng-click="onShowOntologyUploadModal(project)"
+                      data-toggle="modal" data-target="#uploadOntologyModal" title="Upload ontology">
+                <i class="fa fa-upload"></i>
+              </button>
+              <button type="button" class="btn btn-default font-10" ng-click="downloadOntology(project)" title="Download ontology">
+                <i class="fa fa-download"></i>
+              </button>
+              <button type="button" class="btn btn-info font-10" ng-click="onShowOntologyModal(project)"
+                      data-toggle="modal" data-target="#ontologyModal" title="View ontology">
+                <i class="fa fa-eye"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-default font-10" ng-click="onShowAnnotationGuidelinesUploadModal(project)"
+                      data-toggle="modal" data-target="#uploadAnnotationGuidelinesModal" title="Upload annotation guidelines">
+                <i class="fa fa-upload"></i>
+              </button>
+
+              <span ng-show="project.annotationGuidelines">
+                <button type="button" class="btn btn-default font-10" ng-click="downloadAnnotationGuidelines(project)"
+                        title="Download annotation guidelines">
+                  <i class="fa fa-download"></i>
+                </button>
+                <button type="button" class="btn btn-danger font-10" ng-really-message="Are you sure?"
+                        ng-really-click="removeAnnotationGuidelines(item)" item="project" title="Remove annotation guidelines">
+                  <i class="fa fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-info font-10" ng-click="onShowAnnotationGuidelinesModal(project)"
+                        data-toggle="modal" data-target="#annotationGuidelinesModal" title="View annotation guidelines">
+                  <i class="fa fa-eye"></i>
+                </button>
+              </span>
+            </td>
+            <td style="text-align: center;">
+              <button type="button" class="btn btn-warning font-10" ng-click="onShowEditProjectModal(project)"
+                      data-toggle="modal" data-target="#projectModal" title="Edit project">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button type="button" class="btn btn-danger font-10" ng-really-message="Are you sure?"
+                      ng-really-click="removeProject(item)" item="project" title="Remove project">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="projectModal" class="modal fade" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Project</h4>
+      </div>
+      <div class="modal-body">
+
+        <form name="projectForm" class="form-horizontal form-label-left">
+
+          <div class="form-group" ng-if="!isEditMode">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Language <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select class="form-control" ng-model="project.language" ng-options="language.value as language.label for language in languages" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Name <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" ng-model="project.name" class="form-control col-md-7 col-xs-12" required>
+            </div>
+          </div>
+          <div class="form-group" ng-if="!isEditMode">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Ontology <span class="required">*</span></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="file" ng-file-model="project.ontology" class="form-control col-md-7 col-xs-12" accept=".rdf,.owl"/>
+              <span>.owl (XML/OWL)</span>
+            </div>
+          </div>
+          <div class="form-group" ng-if="!isEditMode">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Annotation Guidelines</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="file" ng-file-model="project.annotationGuidelines" class="form-control col-md-7 col-xs-12" accept=".pdf"/>
+              <span>.pdf</span>
+            </div>
+          </div>
+
+          <h4>Text pre-processing</h4>
+
+          <hr/>
+
+          <div class="form-group row">
+            <label class="control-label col-md-5 col-sm-5 col-xs-5 text-align-right">Smart sentence segmentation</label>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <switch ng-model="project.smartSentenceSegmentation" class="green float-left"></switch>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="control-label col-md-5 col-sm-5 col-xs-5 text-align-right">Smart word segmentation</label>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+              <switch ng-model="project.smartWordSegmentation" class="green float-left"></switch>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label class="control-label col-md-4 col-sm-4 col-xs-12">Text Replacement</label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <button type="button" class="btn btn-success font-10" ng-click="addReplacement()">
+                      +
+                  </button>
+              </div>
+          </div>
+
+          <div class="form-group" ng-repeat="replacement in project.textReplacements">
+              <label class="control-label col-md-4 col-sm-4 col-xs-12"></label>
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                  <input type="text" ng-model="replacement.pattern" ng-trim="false" class="form-control col-md-7 col-xs-12" placeholder="Pattern">
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                  <input type="text" ng-model="replacement.value" ng-trim="false" class="form-control col-md-7 col-xs-12" placeholder="Value">
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-12">
+                  <button type="button" class="btn btn-danger font-10" ng-click="removeReplacement(replacement)">
+                      -
+                  </button>
+              </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-disabled="projectForm.$invalid || !project.ontology"
+                ng-click="saveProject()" data-dismiss="modal">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ontologyModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Ontology</h4>
+      </div>
+      <div class="modal-body">
+          
+        <div class="ontology-tree margin-20">
+
+            <script type="text/ng-template" id="entityItem">
+              
+              <input type="checkbox" ng-model="entity.enabled" style="margin-right:5px;"/> 
+              <b>{{entity.label}}</b>
+              
+              <ul ng-if="entity.children && entity.children.length > 0">
+                  <li style="list-style-type: none;">
+                      <i>[subclasses]</i>
+                      <ul>
+                          <li ng-repeat="entity in entity.children" ng-include="'entityItem'"></li>
+                      </ul>
+                  </li>
+              </ul>
+  
+              <ul ng-if="entity.relations && entity.relations.length > 0">
+                  <li style="list-style-type: none;">
+                      <i>[relations]</i>
+                      <ul>
+                          <li ng-repeat="relation in entity.relations">
+                              <input type="checkbox" ng-model="relation.enabled" ng-change="change()" style="margin-right:5px;"/>
+                              {{relation.label}}
+          
+                              <div class="btn-group" uib-dropdown is-open="status.isopen">
+                                  <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle style="padding: 0px 5px;">
+                                  >
+                                  </button>
+                                  <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                  <li ng-repeat="target in relation.targets" style="padding:5px"><b>{{target}}</b></li>
+                                  </ul>
+                              </div>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+              
+          </script>
+
+          <ul>
+            <li ng-repeat="entity in selection.project.entities" ng-include="'entityItem'"></li>
+          </ul> 
+        </div>
+
+        <!--
+        <uib-tabset active="0" justified="true">
+          <uib-tab index="0" heading="Entity">
+            <div class="margin-20">
+              <div ivh-treeview="ontologyEntityTree" 
+                   ivh-treeview-use-checkboxes="true"
+                   ivh-treeview-disable-checkbox-selection-propagation="true"
+                   ivh-treeview-on-cb-change="ontologyTreeChangeCallback(ivhNode, ivhIsSelected, ivhTree)">
+              </div>
+            </div>
+          </uib-tab>
+          <uib-tab index="1" heading="Relation">
+            <div class="margin-20">
+              <div ivh-treeview="ontologyRelationTree"></div>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+        -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="updateProjectEntities()" data-dismiss="modal">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="annotationGuidelinesModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Annotation Guidelines</h4>
+      </div>
+      <div class="modal-body">
+
+        <div id="annotationGuidelinesPdfContainer"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="uploadOntologyModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Ontology</h4>
+      </div>
+      <div class="modal-body">
+        <form name="ontologyForm" class="form-horizontal form-label-left">
+          <div class="form-group">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Ontology <span class="required">*</span></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="file" ng-file-model="selection.ontology" class="form-control col-md-7 col-xs-12" accept=".rdf,.owl"/>
+              <span>.owl (XML/OWL)</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-disabled="ontologyForm.$invalid || !selection.ontology"
+                ng-click="uploadOntology()" data-dismiss="modal">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="uploadAnnotationGuidelinesModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Annotation Guidelines</h4>
+      </div>
+      <div class="modal-body">
+        <form name="annotationGuidelinesForm" class="form-horizontal form-label-left">
+          <div class="form-group">
+            <label class="control-label col-md-4 col-sm-4 col-xs-12" for="first-name">Annotation guidelines <span class="required">*</span></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="file" ng-file-model="selection.annotationGuidelines" class="form-control col-md-7 col-xs-12" accept=".pdf"/>
+              <span>.pdf</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-disabled="annotationGuidelinesForm.$invalid || !selection.annotationGuidelines"
+                ng-click="uploadAnnotationGuidelines()" data-dismiss="modal">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
