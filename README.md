@@ -58,4 +58,4 @@
 
 go to /client folder and run `python3 -m http.server 80`
 
-- To check if everything is working properly, go to http://localhost, sign in using admin credentials and use the the files contained in /samples folder to create a project and make some annotations
+- To check if everything is working properly, go to http://localhost, sign in using admin credentials and use the files contained in /samples folder to create a project and make some annotations
