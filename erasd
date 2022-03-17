@@ -1,0 +1,70 @@
+#!/bin/sh
+
+#################################################################
+# Create a link for the current file to /etc/init.d
+# $ sudo ln -s /home/ubuntu/eras/erasd /etc/init.d/erasd
+#
+# Add erasd file to system services
+# $ sudo update-rc.d erasd defaults
+#
+# Now the application is initialized with the system.
+#
+# To start the application manually, run:
+# $ sudo systemctl start erasd
+#
+# To stop the application manually, run: 
+# $ sudo systemctl stop erasd
+#
+# To check the application status, run:
+# $ sudo systemctl status erasd
+#################################################################
+
+
+PROJECT_PATH=/home/ubuntu/eras
+VIRTUAL_ENV_PATH=/home/ubuntu/eras/venv
+
+
+case "$1" in 
+  start)
+    # Starts Freeling services
+    analyze -f pt.cfg --nonumb --noloc --noner --nodict --outlv tagged --server --flush --port 50040 &
+    analyze -f en.cfg --nonumb --noloc --noner --nodict --outlv tagged --server --flush --port 50050 &
+    analyze -f pt.cfg --outlv tagged --server --flush --port 50041 &
+    analyze -f en.cfg --outlv tagged --server --flush --port 50051 &   
+
+    # Activates the virtual environment
+    . $VIRTUAL_ENV_PATH/bin/activate
+
+    cd $PROJECT_PATH
+
+    # Starts application services
+    gunicorn --chdir authentication -b 0.0.0.0:50000 --log-level debug run:app &
+    gunicorn --chdir data -b 0.0.0.0:50001 --log-level debug run:app &
+    gunicorn --chdir nlp -b 0.0.0.0:50002 --log-level debug run:app &
+
+    cd ${PROJECT_PATH}/client
+
+    # Initializes application
+    python -m http.server 50003 &
+    ;;
+
+  stop)
+    kill -9 `lsof -t -i:50000`
+    kill -9 `lsof -t -i:50001`
+    kill -9 `lsof -t -i:50002`
+    kill -9 `lsof -t -i:50003`
+    kill -9 `lsof -t -i:50040`
+    kill -9 `lsof -t -i:50041`
+    kill -9 `lsof -t -i:50050`
+    kill -9 `lsof -t -i:50051`
+    ;;
+
+  *)
+    echo "Usage: /etc/init.d/erasd {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
+

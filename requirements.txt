@@ -4,3 +4,4 @@ Flask-PyMongo
 requests>=2.4.1
 pycryptodome
 python-jose
+pymongo<=3.12.3

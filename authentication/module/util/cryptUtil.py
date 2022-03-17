@@ -44,11 +44,10 @@ if __name__ == "__main__":
 
     key = 'supersecretkey'
     decrypted_password = 'pass'
-    encrypted_password = 'o51WhrOqtptLoIqILOOlVSSZ9jAnyTLeaFfn8Eg/XRWGeiJN4RBVD9OpFpJ71bCo'
 
     cipher = AESCipher(key=key)
     
-    cipher_decrypted_password = cipher.decrypt(encrypted_password)
-    print(cipher_decrypted_password)
+    encrypted_password = cipher.encrypt(decrypted_password)
 
-    print(decrypted_password == cipher_decrypted_password)
+    print(f'Encrypted password generated from "{decrypted_password}", using key "{key}", is "{encrypted_password}"')
+
