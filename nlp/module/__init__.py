@@ -5,19 +5,19 @@ from flask import Flask
 
 config = {
     'APP_NAME': 'nlp-module',
-    'APP_HOST': '127.0.0.1',
+    'APP_HOST': '0.0.0.0',
     'APP_PORT': 50002,
     'APP_VERSION': '0.19',
-    'APP_STAGE': 'DEVELOPMENT', # 'PRODUCTION'
-    'AUTHENTICATION_HOST': 'http://localhost:50000',
+    'APP_STAGE': 'PRODUCTION',
+    'AUTHENTICATION_HOST': 'http://0.0.0.0:50000',
     'AUTHENTICATION_LOGIN': 'nlp@eras',
     'AUTHENTICATION_PASSWORD': 'pass',
-    'FREELING_HOST': {'pt-br': 'localhost','en-us': 'localhost'},
+    'FREELING_HOST': {'pt-br': '0.0.0.0','en-us': '0.0.0.0'},
     'FREELING_PORT': {
         'pt-br': {'default': 50040, 'with-smart-word-segmentation': 50041},
         'en-us': {'default': 50050, 'with-smart-word-segmentation': 50051}
     },
-    'DATA_HOST': 'http://localhost:50001',
+    'DATA_HOST': 'http://0.0.0.0:50001',
     'LOG_FILE_PATH': 'eras-nlp.log'
 }
 

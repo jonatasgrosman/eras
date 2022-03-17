@@ -10,17 +10,17 @@ SECRET_KEY = 'supersecretkey'
 
 config = {
     'APP_NAME': 'authentication-module',
-    'APP_HOST': '127.0.0.1',
+    'APP_HOST': '0.0.0.0',
     'APP_PORT': 50000,
     'APP_VERSION': '0.19',
-    'APP_STAGE': 'DEVELOPMENT',
+    'APP_STAGE': 'PRODUCTION',
     'CIPHER': AESCipher(SECRET_KEY),
     'SECRET_KEY': SECRET_KEY,
     'JWT_ALGORITHM': 'HS256',
     'JWT_SECRET_KEY': SECRET_KEY,
     'JWT_DELTA_EXPIRATION': 60 * 30000000000,  # 30 min (in seconds)
     'JWT_DELTA_LONG_EXPIRATION': 60 * 60 * 24 * 2,  # 2 days (in seconds)
-    'MONGO_HOST': 'localhost',
+    'MONGO_HOST': '0.0.0.0',
     'MONGO_PORT': 27017,
     'MONGO_DBNAME': 'authentication',
     'MONGO_USERNAME': None,
@@ -34,7 +34,7 @@ config = {
                     'line-height:80px;"><h3>ERAS</h3></div>',
     'EMAIL_FOOTER': '<div style="background:#2A3F54; height:150px; text-align:center; color:#FFFFFF; font-family:Arial;'
                     'line-height:150px;"></div>',
-    'RECOVERY_PASSWORD_PAGE_URL': 'http://localhost/#/recovery-password',
+    'RECOVERY_PASSWORD_PAGE_URL': 'http://PAGE_URL_OR_IP[:PORT]/#/recovery-password',
     'RECOVERY_PASSWORD_EMAIL_SUBJECT': 'ERAS - password recovery',
     'RECOVERY_PASSWORD_EMAIL_MESSAGE': '<p>To recover your password please access the link below</p>',
     'WELCOME_PAGE_URL': 'http://localhost/#/recovery-password',
@@ -99,3 +99,4 @@ logging.config.dictConfig({
 import module.route.rootRoutes
 import module.route.authRoutes
 import module.route.userRoutes
+

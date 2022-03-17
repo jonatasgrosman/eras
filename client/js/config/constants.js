@@ -4,6 +4,6 @@ angular.module('ERAS').constant('Constants', {
 	USER_STORAGE_KEY: 'user',
 	BASE_HREF: '/',
 	VERSION: '0.19',
-	STAGE: 'DEVELOPMENT'
+	STAGE: 'PRODUCTION'
 });
 
