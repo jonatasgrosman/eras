@@ -1,3 +1,7 @@
+_Eras: Improving the quality control in the annotation process for Natural Language Processing tasks_
+https://www.sciencedirect.com/science/article/abs/pii/S0306437920300521
+
+
 # INITIAL SETUP
 
 ## Install dependencies
